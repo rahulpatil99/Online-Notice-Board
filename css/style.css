@@ -1,0 +1,36 @@
+body{
+    background-image: url(../images/bg.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-size: 2em;
+}
+.glass1{
+    background-color: red;
+}
+.spacer{
+    padding-top: 40px;
+}
+.alert-blue{
+    background-color: #14205a;
+    color: white;
+    padding: 50px;
+}
+.alert-red{
+    background-color: #a50000;
+     color: white;
+}
+p{
+    font-size: 1em;
+    text-align: center;
+}
+.login-box{
+    margin: auto;
+    width: 40%;
+    color: white;
+    padding: 50px;
+    background-color: rgba(0,0,0,0.7);
+    border-radius: 10px;
+}
+.white{
+    color: white;
+}
