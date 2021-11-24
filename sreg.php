@@ -5,9 +5,6 @@
 	
 	if(isset($_POST['sub']))
 	{
-		//print_r($_POST);
-
-	//[name] => a[gender] => male[dob] => 22-10-1998[email] => a@a.com[mob] => 1234567890[qualification] => ME[exp-teaching] => 5[exp-other] => 2[date-joining] => 13-10-2001[faculty_type] => temp//
 	$name =	 $_POST['name']; 
 	$gender = $_POST['gender'];
 	$dob = $_POST['dob'];
