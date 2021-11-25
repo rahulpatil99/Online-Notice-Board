@@ -47,12 +47,12 @@
 		$email = $_POST['email'];
 		$pass = md5($_POST['pass']);
 		
-		$q = mysql_query("select * from admin where email = '$email' and password='$pass'")or die(mysql_error());
+		$q = mysqli_query($con,"select * from admin where email = '$email' and pass='$pass'")or die(mysql_error());
 		
 		
 
-		$n = mysql_num_rows($q);
-		$arr = mysql_fetch_assoc($q);
+		$n = mysqli_num_rows($q);
+		$arr = mysqli_fetch_assoc($q);
 
 		if($n>0)
 		{
