@@ -25,7 +25,8 @@
       <a class="navbar-brand">Welcome: <?php echo $_SESSION['email']?></a>
     </div>
     <ul class="nav navbar-nav">
-      <li><a href="dashboard-admin.php">Home</a></li>     
+      <li class="active"><a href="dashboard-admin.php">Dashboard</a></li>     
+      <li><a href="index.html">Home</a></li>     
       <li><a href="approve_faculty.php">Faculty Approval</a></li>
       <li><a href="disapprove_faculty.php">Faculty Disapproval</a></li>
     </ul>

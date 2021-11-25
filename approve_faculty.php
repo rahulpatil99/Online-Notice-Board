@@ -49,6 +49,7 @@
 </div>    
 
 <?php
+	include "config.php";
 	echo "<h1 class='text-center'>Pending Approvals</h1>";
           
     //print_r($_POST); 
@@ -64,10 +65,10 @@
           
 	function showAll()
     {
-    
-    $q = mysql_query("select * from	faculty where active=0")or die(mysql_error());
+			$con = mysqli_connect("sql302.epizy.com","epiz_30447430","xOonYq2cOHT","epiz_30447430_notice_board")or die(mysql_error());
+    $q = mysqli_query($con,"select * from	faculty where active=-1");
 	
-	$n = mysql_num_rows($q);
+		$n = mysqli_num_rows($q);
 	
 	if($n==0)
 	{
@@ -79,16 +80,16 @@
 		echo "<table border='1' cellpadding='10' align='center' class='table table-borderd bg-warning'><th>Sr. No.</th><th>Faculty Name</th><th>Deparment</th><th>Approve</th><th>Delete</th>";
 		for($i=0;$i<$n;$i++)
 		{
-			$arr = mysql_fetch_assoc($q);
+			$arr = mysqli_fetch_assoc($q);
 			echo "<tr>";
 			echo "<td>".($i+1)."</td>";
 			echo "<td>".$arr['name']."</td>";
 			$dept_id = $arr['dept_id'];
-			$q1 = mysql_query("select dept_name from department where dept_id ='$dept_id'");
-			$dept_name = mysql_fetch_assoc($q1);
+			$q1 = mysqli_query($con,"select dept_name from department where dept_id ='$dept_id'");
+			$dept_name = mysqli_fetch_assoc($q1);
 			echo "<td>".$dept_name['dept_name']."</td>";
-			echo "<td> <a href='approve.php?id=$arr[faculty_id]'>Approve</a>";
-			echo "<td> <a href='delete.php?id=$arr[faculty_id]'>Delete</a>";
+			echo "<td> <a href='approve.php?id=$arr[faculty_id]'><button class='btn btn-ml btn-success'>Approve</button></a>";
+			echo " <td> <a href='delete.php?id=$arr[faculty_id]'><button class='btn btn-ml btn-danger'>Delete</button></a>";
 			echo "</tr>";
 		}
 		echo "</table>";
@@ -97,9 +98,10 @@
           
     function search()
     {
-        $q = mysql_query("select * from	faculty where active=0 and email ='$_POST[email]'")or die(mysql_error());
+			$con = mysqli_connect("sql302.epizy.com","epiz_30447430","xOonYq2cOHT","epiz_30447430_notice_board")or die(mysql_error());
+        $q = mysqli_query($con,"select * from	faculty where active=0 and email ='$_POST[email]'")or die(mysql_error());
 	
-	$n = mysql_num_rows($q);
+	$n = mysqli_num_rows($q);
 	
 	if($n==0)
 	{
@@ -111,16 +113,16 @@
 		echo "<table border='1' cellpadding='10' align='center' class='table table-borderd bg-warning'><th>Sr. No.</th><th>Faculty Name</th><th>Deparment</th><th>Approve</th><th>Delete</th>";
 		for($i=0;$i<$n;$i++)
 		{
-			$arr = mysql_fetch_assoc($q);
+			$arr = mysqli_fetch_assoc($q);
 			echo "<tr>";
 			echo "<td>".($i+1)."</td>";
 			echo "<td>".$arr['name']."</td>";
 			$dept_id = $arr['dept_id'];
-			$q1 = mysql_query("select dept_name from department where dept_id ='$dept_id'");
-			$dept_name = mysql_fetch_assoc($q1);
+			$q1 = mysqli_query($con,"select dept_name from department where dept_id ='$dept_id'");
+			$dept_name = mysqli_fetch_assoc($q1);
 			echo "<td>".$dept_name['dept_name']."</td>";
-			echo "<td> <a href='approve.php?id=$arr[faculty_id]'>Approve</a>";
-			echo "<td> <a href='delete.php?id=$arr[faculty_id]'>Delete</a>";
+			echo "<td> <a href='approve.php?id=$arr[faculty_id]'><button class='btn btn-ml btn-success'>Approve</button></a>";
+      echo " <td> <a href='delete.php?id=$arr[faculty_id]'><button class='btn btn-ml btn-danger'>Delete</button></a>";
 			echo "</tr>";
 		}
 		echo "</table>";
