@@ -21,11 +21,11 @@
 	$dept = $_POST['dept'];
 	$designation = $_POST['designation'];
 
-	$q = mysql_query("insert into faculty values('','$name','$gender','$dob','$email','$mob','$quali','$exp_teaching','$exp_other','$doj','$f_type','$pass',-1,'$salary',$dept,'$designation')")or die(mysql_error());
+	$q = mysqli_query($con,"insert into faculty values('','$name','$gender','$dob','$email','$mob','$quali','$exp_teaching','$exp_other','$doj','$f_type','$pass',-1,'$salary',$dept,'$designation')")or die(mysql_error());
 
 	$data = "You have registered successfully...Please click on following link to confirm your email. Once your account gets activated  Admin will verify your account and you login. <br> <h2><a href='http://127.0.0.1/notice/verify.php?v1=$email&v2=$pass'>Click Here to Verify My Account</a></2>";
 
-	sendmail($email,$data);
+	// sendmail($email,$data);
 	
     }
 	echo "<a href='index.html' class='white text-center'><h2>Back to Home</h2></a>";
@@ -66,23 +66,25 @@
 	Salary: <input  type="text" name="salary" class="form-control"><br>
 	<input type="hidden" name="active" value="0" class="form-control">
 	<select name="dept" class="form-control">
-		<option value="1">BIO</option>
-		<option value="2">CVL</option>
-		<option value="3">CSE</option>
-		<option value="4">ENV</option>
-		<option value="5">ETC</option>
-		<option value="6">ELE</option>
-		<option value="7">IT</option>
-		<option value="8">MECH</option>
-		<option value="9">PROD</option>
-		<option value="10">BSH</option>
+		<option>--Select Department--</option>
+		<option value="1">Aeronautical Engineering</option>
+		<option value="2">Civil Engineering</option>
+		<option value="3">Electronics and communication Engineering</option>
+		<option value="4">Electrical Engineering</option>
+		<option value="5">Mechanical engineering</option>
+		<option value="6">Information Technology</option>
+		<option value="7">Production engineering</option>
+		<option value="8">Textile Engineering</option>
+		<option value="9">Computer Science and Engineering</option>
 	</select>
 	<div class="spacer" style="padding-top:40px"></div>
 	<select name="designation" class="form-control">
-		<option value="asst">Asst. Professor</option>
-		<option value="asso">Ass. Professor</option>
-		<option value="prof">Professor</option>
-		<option value="head">Head</option>
+
+		<option>--Designation--</optionlue=>
+		<option value="Asst. Professor">Asst. Professor</option>
+		<option value="Ass. Professor">Ass. Professor</option>
+		<option value="Professor">Professor</option>
+		<option value="Head">Head</option>
 	</select>
 	<div class="spacer" style="padding-top:40px"></div>
 	<input type="submit" name="sub" class="btn btn-success form-control">
