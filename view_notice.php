@@ -46,11 +46,11 @@
 	}
 	else
 	{
-			$query = mysql_query("select * from notice where faculty_id='$_SESSION[fid]'");
+			$query = mysqli_query($con,"select * from notice where faculty_id='$_SESSION[fid]'");
 			//$arr = mysql_fetch_assoc($query);
 			
 			
-			$n = mysql_num_rows($query);
+			$n = mysqli_num_rows($query);
 			
 			echo "<table border='1' cellpadding='5' class='table table-hover bg-warning'>
 			<tr class='bg-success'>
@@ -58,7 +58,7 @@
 			</tr>";
 			for($i=0;$i<$n;$i++)
 			{
-				$arr = mysql_fetch_assoc($query);
+				$arr = mysqli_fetch_assoc($query);
 				echo "<tr>";
 				echo "<td>".($i+1)."</td>";
 				echo "<td>$arr[notice_name]</td>";

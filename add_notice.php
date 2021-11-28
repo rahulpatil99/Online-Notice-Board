@@ -3,9 +3,9 @@
 	include "session.php";
 
 	//print_r($_SESSION);
-	if(!isset($_SESSION['email']) || isset($_SESSION['id']))
+	if(!isset($_SESSION['email']) || isset($_SESSION['fid']))
 	{
-		header("location: login.php");
+		// header("location: login.php");
 	}
 ?>
 <html>
@@ -62,7 +62,7 @@
 	{
 		if(isset($_POST['sub']))
 		{
-			print_r($_POST);
+			// print_r($_POST);
 			
 			$email  = $_SESSION['email'];
 			$notice_head = $_POST['notice_head'];
@@ -81,7 +81,7 @@
 
 			$datepub = date("Y/m/d");
 			$fid = $_SESSION['fid'];
-			$add_notice = mysql_query("INSERT INTO notice
+			$add_notice = mysqli_query($con,"INSERT INTO notice
 			 VALUES ('','$notice_head','$notice_body','$datepub','$start_date','$end_date',$fid)")or die(mysql_error());
 				$msg = "Successfully Added Notice";
                 echo "<script>alert('$msg')</script>";
