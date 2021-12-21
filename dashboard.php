@@ -6,9 +6,9 @@
 	{
 		header('Location:login.php');
 	}
-    $q  = mysql_query("select * from faculty where faculty_id='$_SESSION[fid]'")or die(mysql_error());
+    $q  = mysqli_query($con,"select * from faculty where faculty_id='$_SESSION[fid]'")or die(mysql_error());
 
-    $arr = mysql_fetch_assoc($q);
+    $arr = mysqli_fetch_assoc($q);
 ?>
 <html>
     <head>
@@ -28,7 +28,9 @@
       <a class="navbar-brand">Faculty ID: <?php echo $_SESSION['fid']?> | Email: <?php echo $_SESSION['email']?></a>
     </div>
     <ul class="nav navbar-nav">
+
       <li class="active"><a href="dashboard.php">Dashboard</a></li>
+      <li><a href="index.html">Home</a></li>
       <li><a href="add_notice.php">Add Notice</a></li>
       <li><a href="view_notice.php">My Notice</a></li>
     </ul>
@@ -154,7 +156,7 @@
                 <h3>Date of Joining</h3>
             </td>
             <td>
-                <h3><?php echo $arr['date-joining'] ?></h3>
+                <h3><?php echo $arr['date_joining'] ?></h3>
             </td>
         </tr>
         <tr class="bg-warning">
@@ -163,8 +165,8 @@
             </td>
             <td>
                 <h3><?php 
-                            $q1 = mysql_query("select dept_name from department where dept_id='$arr[dept_id]'")or die(mysql_error()); 
-                            $dept_name = mysql_fetch_assoc($q1);
+                            $q1 = mysqli_query($con,"select dept_name from department where dept_id='$arr[dept_id]'")or die(mysql_error()); 
+                            $dept_name = mysqli_fetch_assoc($q1);
                             echo $dept_name['dept_name'];
                     ?>
                 </h3>

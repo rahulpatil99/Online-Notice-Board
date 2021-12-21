@@ -26,9 +26,11 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="dashboard-admin.php">Dashboard</a></li>     
-      <li><a href="index.html">Home</a></li>     
-      <li><a href="approve_faculty.php">Faculty Approval</a></li>
-      <li><a href="disapprove_faculty.php">Faculty Disapproval</a></li>
+      <li><a href="index.html">Home</a></li>
+						<li><a href="approve_faculty.php">Faculty Approval</a></li>
+						<li><a href="disapprove_faculty.php">Faculty Disapproval</a></li>
+						<li><a href="approve_student.php">Student Approval</a></li>
+						<li><a href="disapprove_student.php">Student Disapproval</a></li>
     </ul>
     <ul class="nav navbar-nav pull-right">
         <li class="pull-right"><a href="logout.php">Logout</a></li>
