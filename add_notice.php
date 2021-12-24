@@ -45,8 +45,10 @@
        <form method = "post" action="">
         Notice Heading <input type="text" name="notice_head" class="form-control" required>
         <br>
-        Leave Type: <textArea name="notice_body" class = "form-control" rows="7" required></textArea>
-        
+        Body: <textArea name="notice_body" class = "form-control" rows="7" required></textArea>
+        <br>
+        Important : <input type="checkbox" name="imp" id="imp">
+        <br>
         Select from date:<input type="date" name="startdate" class="form-control"><br>
         Select till date:<input type="date" name="enddate" class="form-control"><br>
         <input type="submit" name="sub" class="btn btn-lg btn-success" value="Add Notice">
@@ -69,6 +71,10 @@
 			$notice_body = $_POST['notice_body'];
 			$start_date = $_POST['startdate'];
 			$end_date = $_POST['enddate'];
+      $imp = 0;
+      if(isset($_POST['imp']))
+        $imp = 1;
+
 			
 			$date1=date_create($start_date);
 			$date2=date_create($end_date);
@@ -82,7 +88,7 @@
 			$datepub = date("Y/m/d");
 			$fid = $_SESSION['fid'];
 			$add_notice = mysqli_query($con,"INSERT INTO notice
-			 VALUES ('','$notice_head','$notice_body','$datepub','$start_date','$end_date',$fid)")or die(mysql_error());
+			 VALUES ('','$notice_head','$notice_body','$datepub','$start_date','$end_date',$fid,$imp)")or die(mysql_error());
 				$msg = "Successfully Added Notice";
                 echo "<script>alert('$msg')</script>";
 			}

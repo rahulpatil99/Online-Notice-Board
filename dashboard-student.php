@@ -6,9 +6,9 @@
 	{
 		header('Location:login.php');
 	}
-    $q  = mysql_query("select * from faculty where faculty_id='$_SESSION[fid]'")or die(mysql_error());
+    $q  = mysqli_query($con,"select * from faculty where faculty_id='$_SESSION[fid]'")or die(mysql_error());
 
-    $arr = mysql_fetch_assoc($q);
+    $arr = mysqli_fetch_assoc($q);
 ?>
 <html>
     <head>
@@ -47,21 +47,21 @@
             <h2>Summary</h2>
             <?php
                 $id = $_SESSION['fid'];
-                $notice_q = mysql_query("SELECT
+                $notice_q = mysqli_query($con,"SELECT
                                       *
-                                    FROM notice,faculty,department where faculty.dept_id=department.dept_id")or die(mysql_error());
+                                    FROM notice,faculty,department where faculty.dept_id=department.dept_id order by notice_to DESC")or die(mysql_error());
                
-		$n = mysql_num_rows($notice_q);
+		$n = mysqli_num_rows($notice_q);
 		
         echo "<h2 class='white'>Notice</h2>";
 		echo "<table border='1' cellpadding=1 class='table table-bordered' style='background-color:black;color:white'><th>Sr. No.</th><th>Notice Name</th>
 		<th>Notice Content</th><th>Notice Date</th><th>Valid from</th><th>Valid Till</th>";
 		for($i=0;$i<$n;$i++)
 		{
-			$details = mysql_fetch_assoc($notice_q);
+			$details = mysqli_fetch_assoc($notice_q);
 			//print_r($leave_details);
-
-			echo "<tr>";
+            $style = ($details['imp']==1)?"style='border:2px solid red'" : "";
+			echo "<tr $style>";
 			echo "<td align='center'>".($i+1)."</td>";
 			echo "<td align='center'>$details[notice_name]</td>";
 			echo "<td align='center'>$details[notice_content]</td>";
